@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import ViewPersonalDetails from "./personalSection";
 
-function PersonalDetailsForm(props) {
+function PersonalDetailsForm({ personalForm, setPersonalForm }) {
+  console.log(personalForm.name)
   function handleInputs(e) {
     const { name, value } = e.target;
-    if (name === "name") {
-      props.setFullName(value);
-    }
-    if (name === "email") {
-      props.setEmail(value);
-    }
-    if (name === "phone") {
-      props.setPhone(value);
-    }
-    if (name === "address") {
-      props.setAddress(value);
-    }
+    const updatedForm = [...personalForm]
+    console.log(updatedForm[0])
+    setPersonalForm(updatedForm)
+    console.log(value)
   }
 
   return (
@@ -40,7 +33,7 @@ function PersonalDetailsForm(props) {
             <input
               type="text"
               name="name"
-              value={props.fullName}
+              value={personalForm[0]}
               onChange={handleInputs}
             />
           </div>
@@ -50,7 +43,7 @@ function PersonalDetailsForm(props) {
             <input
               type="text"
               name="email"
-              value={props.email}
+              value={personalForm[1]}
               onChange={handleInputs}
             />
           </div>
@@ -60,7 +53,7 @@ function PersonalDetailsForm(props) {
             <input
               type="text"
               name="phone"
-              value={props.phone}
+              value={personalForm[2]}
               onChange={handleInputs}
             />
           </div>
@@ -70,7 +63,7 @@ function PersonalDetailsForm(props) {
             <input
               type="text"
               name="address"
-              value={props.address}
+              value={personalForm[3]}
               onChange={handleInputs}
             />
           </div>
